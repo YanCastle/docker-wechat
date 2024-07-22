@@ -27,6 +27,7 @@ RUN chown user /home \
   && echo 'user ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 
 USER user
+RUN sudo sed -i 's/deb.debian.org/mirrors.ustc.edu.cn/g' /etc/apt/sources.list
 RUN bash -x /setup.sh
 ENTRYPOINT [ "/entrypoint.sh" ]
 
