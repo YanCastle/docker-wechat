@@ -1,6 +1,7 @@
 FROM zixia/wine:6.0
 
 USER root
+RUN sudo sed -i 's/deb.debian.org/mirrors.ustc.edu.cn/g' /etc/apt/sources.list
 RUN apt update && apt install -y \
     locales \
     mesa-utils \
@@ -27,7 +28,6 @@ RUN chown user /home \
   && echo 'user ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 
 USER user
-RUN sudo sed -i 's/deb.debian.org/mirrors.ustc.edu.cn/g' /etc/apt/sources.list
 RUN bash -x /setup.sh
 ENTRYPOINT [ "/entrypoint.sh" ]
 
