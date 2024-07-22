@@ -1,7 +1,7 @@
 FROM zixia/wine:6.0
 
 USER root
-RUN sudo sed -i 's/deb.debian.org/mirrors.ustc.edu.cn/g' /etc/apt/sources.list
+RUN sed -i 's/deb.debian.org/mirrors.ustc.edu.cn/g' /etc/apt/sources.list
 RUN apt update && apt install -y \
     locales \
     mesa-utils \
