@@ -107,13 +107,24 @@ function startWechat () {
   done
 }
 
+function startQWXY(){
+  echo "startQWXY"
+  wine 'C:\release\qwxy.exe'
+  while true; do
+    # echo "startQWXY"
+    sleep 1
+  done
+}
+
 #
 # Main
 #
 function main () {
 
   if [ "$(id -u)" -ne '0' ]; then
-    startWechat
+    # startWechat
+    setupFontDpi
+    startQWXY
   else
     /dochat/set-user-group.sh
     /dochat/set-hostname.sh
